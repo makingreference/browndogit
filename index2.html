@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brown Dog IT | Reliable computers. Practical IT help.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050709;
+      --panel: #101318;
+      --panel-soft: #171b22;
+      --cream: #f3e3c4;
+      --muted: #b9ac96;
+      --orange: #a14e28;
+      --orange-bright: #d06a34;
+      --line: rgba(243, 227, 196, 0.16);
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(161, 78, 40, 0.26), transparent 32%),
+        radial-gradient(circle at 88% 18%, rgba(243, 227, 196, 0.08), transparent 28%),
+        linear-gradient(180deg, #070a0e 0%, var(--bg) 55%, #030405 100%);
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(5, 7, 9, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+.logo-badge {
+  padding: 0;
+  overflow: hidden;
+  background: #11151b;
+}
+
+.logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    .badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      border: 2px solid rgba(243, 227, 196, 0.5);
+      background: linear-gradient(145deg, #2a2018, #0d1015);
+      display: grid;
+      place-items: center;
+      color: var(--orange-bright);
+      font-weight: 900;
+      box-shadow: 0 12px 28px var(--shadow);
+    }
+
+    .brand strong {
+      display: block;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2rem;
+      line-height: 0.9;
+      letter-spacing: 0.08em;
+    }
+
+    .brand span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      padding: 0;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    nav a:hover { color: var(--cream); }
+
+    .hero {
+      min-height: 720px;
+      display: grid;
+      align-items: center;
+      padding: 88px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(243, 227, 196, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(243, 227, 196, 0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--orange-bright);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 800;
+      font-size: 0.84rem;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.055em;
+      line-height: 0.95;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(4.4rem, 8vw, 8.9rem);
+      max-width: 760px;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin: 26px 0 34px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--orange);
+      color: white;
+      border-color: rgba(255,255,255,0.08);
+      box-shadow: 0 18px 34px rgba(161,78,40,0.28);
+    }
+
+    .btn.secondary {
+      background: rgba(243, 227, 196, 0.06);
+      color: var(--cream);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .terminal-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025)),
+        rgba(16, 19, 24, 0.88);
+      box-shadow: 0 30px 80px var(--shadow);
+      overflow: hidden;
+    }
+
+    .terminal-top {
+      display: flex;
+      gap: 8px;
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,0.25);
+    }
+
+    .dot { width: 11px; height: 11px; border-radius: 50%; background: rgba(243,227,196,0.35); }
+    .dot:nth-child(1) { background: var(--orange-bright); }
+
+    .terminal-body { padding: 28px; }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .status-row strong { color: var(--cream); }
+
+    .screen-title {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.4rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    section { padding: 84px 0; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    h2 { font-size: clamp(3rem, 5vw, 5.2rem); }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+      padding: 28px;
+      min-height: 260px;
+      box-shadow: 0 18px 36px rgba(0,0,0,0.2);
+    }
+
+    .card .num {
+      color: var(--orange-bright);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      margin-bottom: 44px;
+    }
+
+    .card h3 { font-size: 2.2rem; margin-bottom: 14px; }
+    .card p { color: var(--muted); margin: 0; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: rgba(16,19,24,0.82);
+      padding: 36px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.26);
+    }
+
+    .checklist {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .check {
+      display: flex;
+      gap: 12px;
+      color: var(--muted);
+      align-items: flex-start;
+    }
+
+    .check b { color: var(--cream); }
+    .mark { color: var(--orange-bright); font-weight: 900; }
+
+    .inventory {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .product {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+    }
+
+    .product-img {
+      min-height: 190px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(243,227,196,0.14), transparent 42%),
+        linear-gradient(135deg, #20252e, #0b0e13);
+      display: grid;
+      place-items: center;
+      color: rgba(243,227,196,0.4);
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.08em;
+    }
+
+    .product-body { padding: 22px; }
+    .product h3 { font-size: 2rem; }
+    .specs { color: var(--muted); margin: 10px 0 18px; font-size: 0.95rem; }
+    .price { font-weight: 900; color: var(--cream); }
+
+    .cta {
+      border: 1px solid rgba(208,106,52,0.5);
+      border-radius: 30px;
+      background:
+        linear-gradient(120deg, rgba(161,78,40,0.32), rgba(16,19,24,0.7)),
+        var(--panel);
+      padding: 54px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.32);
+    }
+
+    .cta p { color: var(--muted); margin: 12px 0 0; max-width: 700px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      nav { display: none; }
+      .hero-grid, .split, .cta { grid-template-columns: 1fr; }
+      .cards, .inventory { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 64px; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
+      .cta { padding: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <div class="badge logo-badge">
+  <img src="images/doghead2.png" alt="Brown Dog IT">
+</div>
+        <div>
+          <strong>Brown Dog IT</strong>
+          <span>Sales • Service • Support</span>
+        </div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#systems">Systems</a></li>
+          <li><a href="#support">Support</a></li>
+          <li><a href="#why">Why Brown Dog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Business-class technology without the big-box runaround</div>
+          <h1>Reliable computers. Practical IT help.</h1>
+          <p>
+            Brown Dog IT provides professionally refurbished business computers, setup help, repairs,
+            and small-business technology support backed by decades of hands-on experience.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#systems">View Available Systems</a>
+            <a class="btn secondary" href="#contact">Request IT Help</a>
+          </div>
+        </div>
+
+        <div class="terminal-card" aria-label="Service status card">
+          <div class="terminal-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="terminal-body">
+            <div class="screen-title">Brown Dog Field Notes</div>
+            <div class="status-row"><span>Refurbished Laptops</span><strong>Dell / HP</strong></div>
+            <div class="status-row"><span>Primary customers</span><strong>Small Business / Students</strong></div>
+            <div class="status-row"><span>Services</span><strong>Setup / Repair / Network</strong></div>
+            <div class="status-row"><span>Approach</span><strong>Plain-English sales and support</strong></div>
+            <div class="status-row"><span>Experience</span><strong>35+ years</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What We Do</h2>
+          <p>Focused services for home offices, small businesses, and customers who need equipment that is tested, configured, and ready to work.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="num">01 / SYSTEMS</div>
+            <h3>Refurbished Business Computers</h3>
+            <p>Dell and HP laptops, desktops, docks, and displays selected for practical business use—not bargain-bin consumer leftovers.</p>
+          </article>
+
+          <article class="card">
+            <div class="num">02 / SERVICE</div>
+            <h3>Repair & Setup</h3>
+            <p>Computer tune-ups, SSD upgrades, Windows setup, data migration, Microsoft 365 setup, printer help, and troubleshooting.</p>
+          </article>
+
+          <article class="card">
+            <div class="num">03 / SUPPORT</div>
+            <h3>Small Business IT</h3>
+            <p>Network, Wi‑Fi, workstation, backup, email, and remote support for businesses that need IT expertise without a full-time IT department.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="wrap split">
+        <div>
+          <div class="eyebrow">Why Brown Dog IT</div>
+          <h2>Old-school accountability. Modern tools.</h2>
+          <p style="color: var(--muted); margin-top: 22px;">
+            The Brown Dog name has history. The goal is simple: sell dependable systems, explain the technology clearly, and provide support that feels personal instead of transactional.
+          </p>
+        </div>
+        <div class="panel">
+          <h3 style="font-size: 2.5rem;">Built around trust</h3>
+          <div class="checklist">
+            <div class="check"><span class="mark">✓</span><span><b>35+ years</b> of practical computer and network experience</span></div>
+            <div class="check"><span class="mark">✓</span><span><b>Microsoft, A+, and Network+</b> Certiied</span></div>
+            <div class="check"><span class="mark">✓</span><span><b>Business-class hardware</b> from trusted manufacturers</span></div>
+            <div class="check"><span class="mark">✓</span><span><b>Setup help available</b> so the computer is ready for real work</span></div>
+            <div class="check"><span class="mark">✓</span><span><b>Warranty options</b> and honest condition descriptions</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Featured Systems</h2>
+          <p>Placeholder inventory cards for the mockup. These can become real product listings later, or link directly to eBay, PayPal, Square, or a contact form.</p>
+        </div>
+
+        <div class="inventory">
+          <article class="product">
+            <div class="product-img">Laptop</div>
+            <div class="product-body">
+              <h3>Dell Latitude</h3>
+              <div class="specs">Intel Core i5 • 16GB RAM • 512GB SSD • Windows 11 Pro</div>
+              <div class="price">Starting at $349</div>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-img">Desktop</div>
+            <div class="product-body">
+              <h3>HP EliteDesk</h3>
+              <div class="specs">Small form factor • Business desktop • Keyboard/mouse options</div>
+              <div class="price">Starting at $249</div>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-img">Bundle</div>
+            <div class="product-body">
+              <h3>Office Setup</h3>
+              <div class="specs">Laptop or desktop • Dock • Monitor • Setup support</div>
+              <div class="price">Quote available</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <h2>Need a computer or IT help?</h2>
+            <p>Tell us what you’re trying to do. We’ll help match the right system or support option without overselling what you don’t need.</p>
+          </div>
+          <a class="btn primary" href="mailto:info@browndogit.com">Contact Brown Dog IT</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>© 2026 Brown Dog IT. All rights reserved.</div>
+      <div>Refurbished Computers • IT Support • Small Business Technology</div>
+    </div>
+  </footer>
+</body>
+</html>
