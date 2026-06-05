@@ -50,18 +50,7 @@
       background: rgba(5, 7, 9, 0.78);
       border-bottom: 1px solid var(--line);
     }
-.logo-badge {
-  padding: 0;
-  overflow: hidden;
-  background: #11151b;
-}
 
-.logo-badge img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
     .nav {
       height: 76px;
       display: flex;
@@ -341,18 +330,19 @@
       background: var(--panel);
     }
 
-  .product-img {
-  min-height: 400px;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.38)),
-    var(--img) center / cover no-repeat,
-    linear-gradient(135deg, #20252e, #0b0e13);
-  display: block;
-}
+    .product-img {
+      min-height: 190px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(243,227,196,0.14), transparent 42%),
+        linear-gradient(135deg, #20252e, #0b0e13);
+      display: grid;
+      place-items: center;
+      color: rgba(243,227,196,0.4);
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: 0.08em;
     }
-.product-body {
-  padding: 22px 22px 28px;
-}
+
     .product-body { padding: 22px; }
     .product h3 { font-size: 2rem; }
     .specs { color: var(--muted); margin: 10px 0 18px; font-size: 0.95rem; }
@@ -403,9 +393,7 @@
   <header>
     <div class="wrap nav">
       <a class="brand" href="#">
-        <div class="badge logo-badge">
-  <img src="images/doghead2.png" alt="Brown Dog IT">
-</div>
+        <div class="badge">BD</div>
         <div>
           <strong>Brown Dog IT</strong>
           <span>Sales • Service • Support</span>
@@ -512,7 +500,7 @@
 
         <div class="inventory">
           <article class="product">
-            <div class="product-img" style="--img: url('images/latitude 3460a.png');"></div>
+            <div class="product-img">Laptop</div>
             <div class="product-body">
               <h3>Dell Latitude</h3>
               <div class="specs">Intel Core i5 • 16GB RAM • 512GB SSD • Windows 11 Pro</div>
@@ -521,7 +509,7 @@
           </article>
 
           <article class="product">
-           <div class="product-img" style="--img: url('images/hpelitedeska.png');"></div>
+            <div class="product-img">Desktop</div>
             <div class="product-body">
               <h3>HP EliteDesk</h3>
               <div class="specs">Small form factor • Business desktop • Keyboard/mouse options</div>
@@ -530,8 +518,7 @@
           </article>
 
           <article class="product">
-           <div class="product-img" style="--img: url('images/small office.png');"></div>
-
+            <div class="product-img">Bundle</div>
             <div class="product-body">
               <h3>Office Setup</h3>
               <div class="specs">Laptop or desktop • Dock • Monitor • Setup support</div>
